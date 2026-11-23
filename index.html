@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lady R. — Sito Ufficiale</title>
+  <meta name="description" content="Lady R., cantante. Sito ufficiale: la mia storia e i miei contatti." />
+  <style>
+    :root {
+      --bg: #0d0b10;
+      --bg-soft: #16121c;
+      --gold: #d4af37;
+      --gold-soft: rgba(212, 175, 55, 0.35);
+      --text: #efeae2;
+      --text-dim: #a89f94;
+      --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+      --sans: "Inter", "Segoe UI", Arial, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.7;
+    }
+
+    h1, h2 { font-family: var(--serif); font-weight: 500; }
+
+    .gold { color: var(--gold); }
+
+    /* ---------- NAV ---------- */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 2rem;
+      background: rgba(13, 11, 16, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+    .logo {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+    nav ul { display: flex; gap: 2rem; list-style: none; }
+    nav a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: var(--gold); }
+
+    /* ---------- HERO ---------- */
+    header.hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 1.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 20%, rgba(212, 175, 55, 0.12), transparent 55%),
+        radial-gradient(ellipse at 80% 80%, rgba(120, 60, 120, 0.10), transparent 50%);
+    }
+    .hero > * { position: relative; }
+    .hero-eyebrow {
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(3rem, 10vw, 6.5rem);
+      letter-spacing: 0.08em;
+      color: var(--gold);
+    }
+    .hero-sub {
+      max-width: 32rem;
+      margin-top: 1.2rem;
+      color: var(--text-dim);
+      font-style: italic;
+    }
+    .hero-btn {
+      display: inline-block;
+      margin-top: 2.5rem;
+      padding: 0.85rem 2.4rem;
+      border: 1px solid var(--gold-soft);
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      transition: all 0.3s;
+    }
+    .hero-btn:hover {
+      background: var(--gold);
+      color: var(--bg);
+    }
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--gold-soft);
+      font-size: 1.5rem;
+      animation: float 2s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ---------- SEZIONI ---------- */
+    section {
+      max-width: 62rem;
+      margin: 0 auto;
+      padding: 6rem 1.5rem;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+    .section-line {
+      width: 4rem;
+      height: 1px;
+      background: var(--gold-soft);
+      margin: 1rem auto 3rem;
+    }
+
+    /* Chi sono */
+    .about {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .about-photo {
+      flex: 1 1 260px;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+    .about-photo img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+      border: 1px solid var(--gold-soft);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+    .about-text { flex: 1 1 300px; }
+    .about-text p {
+      color: var(--text-dim);
+      margin-bottom: 1.2rem;
+    }
+    .about-signature {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--gold);
+    }
+
+    /* Spazio musica (per il futuro) */
+    .music-placeholder {
+      border: 1px dashed rgba(212, 175, 55, 0.3);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--text-dim);
+      font-style: italic;
+    }
+
+    /* Contatti */
+    .contact-box {
+      text-align: center;
+      background: var(--bg-soft);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      padding: 3.5rem 2rem;
+    }
+    .contact-box p { color: var(--text-dim); max-width: 30rem; margin: 0 auto 2rem; }
+    .contact-mail {
+      color: var(--gold);
+      text-decoration: none;
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      border-bottom: 1px solid var(--gold-soft);
+      transition: opacity 0.3s;
+    }
+    .contact-mail:hover { opacity: 0.7; }
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .socials a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .socials a:hover { color: var(--gold); }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: rgba(168, 159, 148, 0.5);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+    }
+
+    @media (max-width: 640px) {
+      nav ul { display: none; }
+      section { padding: 4rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="logo">LADY&nbsp;R.</a>
+    <ul>
+      <li><a href="#chi-sono">Chi sono</a></li>
+      <li><a href="#musica">Musica</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <p class="hero-eyebrow">Cantante</p>
+    <h1>LADY R.</h1>
+    <p class="hero-sub">«Una voce che racconta storie, una nota alla volta.»</p>
+    <a href="#chi-sono" class="hero-btn">Scopri chi sono</a>
+    <span class="scroll-hint">▾</span>
+  </header>
+
+  <section id="chi-sono">
+    <h2 class="section-title">CHI <span class="gold">SONO</span></h2>
+    <div class="section-line"></div>
+    <div class="about">
+      <div class="about-photo">
+        <img src="foto.jpg" alt="Lady R. in concerto" />
+      </div>
+      <div class="about-text">
+        <p>
+          Ciao! Sono <strong>Lady R.</strong>, cantante con una passione che
+          nasce piccola e cresce ogni giorno: <em>cantare</em>.
+          La musica per me non è solo uno spettacolo, è un modo di
+          raccontare chi sono e di arrivare al cuore delle persone.
+        </p>
+        <p>
+          Dal vivo è dove mi esprimo di più: ogni esibizione è un regalo
+          che ricevo dal pubblico e che cerco di restituire con la voce,
+          l'energia e le emozioni di ogni brano.
+        </p>
+        <p class="about-signature">— Lady R. 🎤</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="musica">
+    <h2 class="section-title">MUSICA <span class="gold">IN ARRIVO</span></h2>
+    <div class="section-line"></div>
+    <div class="music-placeholder">
+      🎵 Le mie canzoni arriveranno qui: Spotify, YouTube e tutte le piattaforme.<br />
+      Nel frattempo, seguimi sui social per restare aggiornata!
+    </div>
+  </section>
+
+  <section id="contatti">
+    <h2 class="section-title">CONTATTI <span class="gold">&amp; PRENOTAZIONI</span></h2>
+    <div class="section-line"></div>
+    <div class="contact-box">
+      <p>
+        Vuoi ingaggiarmi per un evento, una festa o una cerimonia?
+        Scrivimi: rispondo personalmente.
+      </p>
+      <a href="mailto:ladyr@email.com" class="contact-mail">ladyr@email.com</a>
+      <div class="socials">
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2025 Lady R. — Tutti i diritti riservati</footer>
+
+</body>
+</html>
